@@ -1,8 +1,8 @@
 radio.onReceivedNumber(function (receivedNumber) {
     if (receivedNumber == 1) {
         Angulo += 10
-        if (Angulo > 180) {
-            Angulo = 180
+        if (Angulo > 270) {
+            Angulo = 270
         }
     } else if (receivedNumber == 2) {
         Angulo += -10
@@ -19,6 +19,9 @@ radio.onReceivedNumber(function (receivedNumber) {
         if (Velocidad < 0) {
             Velocidad = 0
         }
+    } else if (receivedNumber == 5) {
+        Angulo = 90
+        Velocidad = 0
     }
 })
 input.onButtonPressed(Button.A, function () {
@@ -29,6 +32,9 @@ input.onGesture(Gesture.TiltRight, function () {
 })
 input.onGesture(Gesture.TiltLeft, function () {
     radio.sendNumber(1)
+})
+input.onButtonPressed(Button.AB, function () {
+    radio.sendNumber(5)
 })
 input.onButtonPressed(Button.B, function () {
     radio.sendNumber(4)
